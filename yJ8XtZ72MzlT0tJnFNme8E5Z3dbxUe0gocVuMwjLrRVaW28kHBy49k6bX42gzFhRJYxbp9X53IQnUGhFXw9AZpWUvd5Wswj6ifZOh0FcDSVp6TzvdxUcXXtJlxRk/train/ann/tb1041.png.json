@@ -1,0 +1,68 @@
+{
+    "description": "",
+    "tags": [
+        {
+            "id": 4040998,
+            "tagId": 16811,
+            "name": "active_tb",
+            "value": null,
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:22:00.986Z",
+            "updatedAt": "2023-09-15T08:22:00.986Z"
+        }
+    ],
+    "size": {
+        "height": 512,
+        "width": 512
+    },
+    "objects": [
+        {
+            "id": 44091956,
+            "classId": 53286,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:22:00.987Z",
+            "updatedAt": "2023-09-15T08:22:00.987Z",
+            "tags": [],
+            "classTitle": "ActiveTuberculosis",
+            "points": {
+                "exterior": [
+                    [
+                        299,
+                        102
+                    ],
+                    [
+                        442,
+                        302
+                    ]
+                ],
+                "interior": []
+            }
+        },
+        {
+            "id": 44091955,
+            "classId": 53286,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:22:00.987Z",
+            "updatedAt": "2023-09-15T08:22:00.987Z",
+            "tags": [],
+            "classTitle": "ActiveTuberculosis",
+            "points": {
+                "exterior": [
+                    [
+                        81,
+                        72
+                    ],
+                    [
+                        242,
+                        254
+                    ]
+                ],
+                "interior": []
+            }
+        }
+    ]
+}

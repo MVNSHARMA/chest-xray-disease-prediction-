@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chest X-ray Diagnostics | Medical Assistant</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #f4f7fa;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #0ea5e9;
+            --accent-hover: #0284c7;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f0fdf4 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #0ea5e9, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .upload-area {
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .upload-area:hover, .upload-area.dragover {
+            border-color: var(--accent);
+            background: #f0f9ff;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        .file-name {
+            margin-top: 15px;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--danger);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: #7f1d1d;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .info-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+        
+        .info-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="glass-card">
+            <h1>AI Chest X-ray Diagnostics</h1>
+            <p class="subtitle">Advanced deep learning tool for detecting Normal, Pneumonia, and Tuberculosis patterns in X-rays.</p>
+
+            <form action="/predict" method="POST" enctype="multipart/form-data" id="uploadForm">
+                <div class="upload-area" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">🩺</div>
+                    <p style="margin: 0; font-weight: 500;">Click to browse or drag and drop your X-ray here</p>
+                    <p style="margin: 5px 0 0; font-size: 0.85rem; color: var(--text-muted);">Supports JPG, PNG, JPEG</p>
+                    <input type="file" name="file" id="fileInput" accept="image/*" required onchange="updateFileName(this)">
+                    <div class="file-name" id="fileNameDisplay"></div>
+                </div>
+                
+                <button type="submit" class="btn-submit" id="submitBtn">Analyze X-ray</button>
+            </form>
+
+            <div class="disclaimer">
+                <strong>⚠️ IMPORTANT MEDICAL DISCLAIMER:</strong> This tool utilizes Artificial Intelligence to analyze patterns in chest radiography. It is designed for educational and preliminary screening purposes <strong>ONLY</strong>. It is <strong>NOT</strong> a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider regarding any medical condition or before making any healthcare decisions.
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Pneumonia</h3>
+                    <p>Detects inflammatory conditions in the lung primarily affecting the microscopic air sacs (alveoli).</p>
+                </div>
+                <div class="info-card">
+                    <h3>Tuberculosis (TB)</h3>
+                    <p>Identifies potential Mycobacterium tuberculosis infection, often visible as opacities or cavities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+
+        // Drag and drop functionality
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.add('dragover'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.remove('dragover'), false);
+        });
+
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            fileInput.files = files;
+            updateFileName(fileInput);
+        }
+
+        function updateFileName(input) {
+            const display = document.getElementById('fileNameDisplay');
+            if (input.files && input.files.length > 0) {
+                display.textContent = "Selected: " + input.files[0].name;
+            } else {
+                display.textContent = "";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{
+    "description": "",
+    "tags": [
+        {
+            "id": 4041055,
+            "tagId": 16812,
+            "name": "latent_tb",
+            "value": null,
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:22:02.227Z",
+            "updatedAt": "2023-09-15T08:22:02.227Z"
+        }
+    ],
+    "size": {
+        "height": 512,
+        "width": 512
+    },
+    "objects": [
+        {
+            "id": 44092043,
+            "classId": 53287,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:22:02.228Z",
+            "updatedAt": "2023-09-15T08:22:02.228Z",
+            "tags": [],
+            "classTitle": "ObsoletePulmonaryTuberculosis",
+            "points": {
+                "exterior": [
+                    [
+                        147,
+                        66
+                    ],
+                    [
+                        253,
+                        183
+                    ]
+                ],
+                "interior": []
+            }
+        },
+        {
+            "id": 44092042,
+            "classId": 53287,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:22:02.228Z",
+            "updatedAt": "2023-09-15T08:22:02.228Z",
+            "tags": [],
+            "classTitle": "ObsoletePulmonaryTuberculosis",
+            "points": {
+                "exterior": [
+                    [
+                        129,
+                        230
+                    ],
+                    [
+                        162,
+                        260
+                    ]
+                ],
+                "interior": []
+            }
+        },
+        {
+            "id": 44092041,
+            "classId": 53287,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:22:02.227Z",
+            "updatedAt": "2023-09-15T08:22:02.227Z",
+            "tags": [],
+            "classTitle": "ObsoletePulmonaryTuberculosis",
+            "points": {
+                "exterior": [
+                    [
+                        358,
+                        113
+                    ],
+                    [
+                        389,
+                        138
+                    ]
+                ],
+                "interior": []
+            }
+        }
+    ]
+}

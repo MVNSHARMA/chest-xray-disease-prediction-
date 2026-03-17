@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result | AI Diagnostics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #f4f7fa;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #0ea5e9;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f0fdf4 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .glass-card {
+                flex-direction: column;
+            }
+        }
+
+        .image-col, .result-col {
+            flex: 1;
+            width: 100%;
+        }
+
+        .image-preview {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            object-fit: cover;
+            border: 1px solid #e2e8f0;
+        }
+
+        .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .prediction-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+        }
+
+        .pred-normal { color: var(--success); }
+        .pred-pneumonia { color: var(--warning); }
+        .pred-tuberculosis { color: var(--danger); }
+
+        .confidence-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-bar.bg-success { background-color: var(--success); }
+        .progress-bar.bg-warning { background-color: var(--warning); }
+        .progress-bar.bg-danger { background-color: var(--danger); }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: white;
+            color: var(--text-main);
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            background-color: #f1f5f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .advice-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .advice-normal { background-color: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--success); }
+        .advice-abnormal { background-color: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--danger); }
+
+        .disclaimer-small {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="glass-card">
+            
+            <div class="image-col">
+                <div class="label">Original Scan</div>
+                <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Analyzed X-ray" class="image-preview">
+            </div>
+
+            <div class="result-col">
+                <div class="label">AI Assessment</div>
+                <h1 class="prediction-value 
+                    {% if prediction.upper() == 'NORMAL' %}pred-normal
+                    {% elif prediction.upper() == 'PNEUMONIA' %}pred-pneumonia
+                    {% else %}pred-tuberculosis{% endif %}">
+                    {{ prediction | capitalize }}
+                </h1>
+
+                <div class="confidence-box">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="label" style="margin: 0;">Confidence Score</span>
+                        <span style="font-weight: 700; color: var(--text-main);">{{ confidence }}%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar 
+                            {% if prediction.upper() == 'NORMAL' %}bg-success
+                            {% elif prediction.upper() == 'PNEUMONIA' %}bg-warning
+                            {% else %}bg-danger{% endif %}" 
+                            style="width: {{ confidence }}%;">
+                        </div>
+                    </div>
+                </div>
+
+                {% if prediction.upper() == 'NORMAL' %}
+                    <div class="advice-box advice-normal">
+                        <strong>General Finding:</strong> No distinct patterns of Pneumonia or Tuberculosis were detected by the AI. <br><br>
+                        <em>Recommendation:</em> Maintain regular health checkups. If you are experiencing respiratory symptoms (cough, shortness of breath, chest pain), please consult a doctor regardless of this result.
+                    </div>
+                {% else %}
+                    <div class="advice-box advice-abnormal">
+                        <strong>Attention Required:</strong> The AI detected patterns consistent with {{ prediction | capitalize }}. <br><br>
+                        <em>Recommendation:</em> Please schedule an appointment with a pulmonologist or healthcare provider <strong>immediately</strong> for a formal clinical evaluation and diagnosis. Bring this scan with you.
+                    </div>
+                {% endif %}
+
+                <div style="margin-top: 30px;">
+                    <a href="/" class="btn-back">← Analyze Another Scan</a>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="disclaimer-small">
+            <strong>Medical Disclaimer:</strong> This application is an AI tool designed for preliminary screening only. It does not provide medical diagnoses, treatment advice, or replace a professional clinical assessment by a human radiologist or doctor. False positives and false negatives may occur.
+        </div>
+    </div>
+
+</body>
+</html>

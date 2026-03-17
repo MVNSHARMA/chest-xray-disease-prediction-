@@ -1,0 +1,19 @@
+{
+    "description": "",
+    "tags": [
+        {
+            "id": 4042228,
+            "tagId": 16809,
+            "name": "healthy",
+            "value": null,
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:22:34.376Z",
+            "updatedAt": "2023-09-15T08:22:34.376Z"
+        }
+    ],
+    "size": {
+        "height": 512,
+        "width": 512
+    },
+    "objects": []
+}

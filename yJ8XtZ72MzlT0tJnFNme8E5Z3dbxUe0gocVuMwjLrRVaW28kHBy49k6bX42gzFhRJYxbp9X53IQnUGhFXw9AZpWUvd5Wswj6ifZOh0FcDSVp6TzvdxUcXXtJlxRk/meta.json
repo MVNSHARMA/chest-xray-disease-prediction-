@@ -1,0 +1,77 @@
+{
+    "classes": [
+        {
+            "title": "ActiveTuberculosis",
+            "shape": "rectangle",
+            "color": "#FF0000",
+            "geometry_config": {},
+            "id": 53286,
+            "hotkey": ""
+        },
+        {
+            "title": "ObsoletePulmonaryTuberculosis",
+            "shape": "rectangle",
+            "color": "#00FFAA",
+            "geometry_config": {},
+            "id": 53287,
+            "hotkey": ""
+        }
+    ],
+    "tags": [
+        {
+            "name": "active&latent_tb",
+            "value_type": "none",
+            "color": "#0F8A60",
+            "id": 16813,
+            "hotkey": "",
+            "applicable_type": "all",
+            "classes": []
+        },
+        {
+            "name": "active_tb",
+            "value_type": "none",
+            "color": "#8A5B0F",
+            "id": 16811,
+            "hotkey": "",
+            "applicable_type": "all",
+            "classes": []
+        },
+        {
+            "name": "healthy",
+            "value_type": "none",
+            "color": "#8A0F10",
+            "id": 16809,
+            "hotkey": "",
+            "applicable_type": "all",
+            "classes": []
+        },
+        {
+            "name": "latent_tb",
+            "value_type": "none",
+            "color": "#8A750F",
+            "id": 16812,
+            "hotkey": "",
+            "applicable_type": "all",
+            "classes": []
+        },
+        {
+            "name": "sick_but_non-tb",
+            "value_type": "none",
+            "color": "#0F8A29",
+            "id": 16810,
+            "hotkey": "",
+            "applicable_type": "all",
+            "classes": []
+        },
+        {
+            "name": "uncertain_tb",
+            "value_type": "none",
+            "color": "#408A0F",
+            "id": 16814,
+            "hotkey": "",
+            "applicable_type": "all",
+            "classes": []
+        }
+    ],
+    "projectType": "images"
+}

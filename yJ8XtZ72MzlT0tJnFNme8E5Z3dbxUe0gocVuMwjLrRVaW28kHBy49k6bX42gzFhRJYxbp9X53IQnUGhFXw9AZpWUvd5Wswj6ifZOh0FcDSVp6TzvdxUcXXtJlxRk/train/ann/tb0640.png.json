@@ -1,0 +1,92 @@
+{
+    "description": "",
+    "tags": [
+        {
+            "id": 4040796,
+            "tagId": 16813,
+            "name": "active&latent_tb",
+            "value": null,
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:21:55.000Z",
+            "updatedAt": "2023-09-15T08:21:55.000Z"
+        }
+    ],
+    "size": {
+        "height": 512,
+        "width": 512
+    },
+    "objects": [
+        {
+            "id": 44091650,
+            "classId": 53286,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:21:55.000Z",
+            "updatedAt": "2023-09-15T08:21:55.000Z",
+            "tags": [],
+            "classTitle": "ActiveTuberculosis",
+            "points": {
+                "exterior": [
+                    [
+                        88,
+                        96
+                    ],
+                    [
+                        228,
+                        229
+                    ]
+                ],
+                "interior": []
+            }
+        },
+        {
+            "id": 44091649,
+            "classId": 53286,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:21:55.000Z",
+            "updatedAt": "2023-09-15T08:21:55.000Z",
+            "tags": [],
+            "classTitle": "ActiveTuberculosis",
+            "points": {
+                "exterior": [
+                    [
+                        93,
+                        266
+                    ],
+                    [
+                        131,
+                        300
+                    ]
+                ],
+                "interior": []
+            }
+        },
+        {
+            "id": 44091648,
+            "classId": 53287,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:21:55.000Z",
+            "updatedAt": "2023-09-15T08:21:55.000Z",
+            "tags": [],
+            "classTitle": "ObsoletePulmonaryTuberculosis",
+            "points": {
+                "exterior": [
+                    [
+                        303,
+                        102
+                    ],
+                    [
+                        420,
+                        229
+                    ]
+                ],
+                "interior": []
+            }
+        }
+    ]
+}

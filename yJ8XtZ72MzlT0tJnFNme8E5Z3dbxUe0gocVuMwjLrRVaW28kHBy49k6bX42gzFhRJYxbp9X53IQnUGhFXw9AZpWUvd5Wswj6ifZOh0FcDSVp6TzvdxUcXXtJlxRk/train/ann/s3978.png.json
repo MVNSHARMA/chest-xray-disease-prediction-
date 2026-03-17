@@ -1,0 +1,19 @@
+{
+    "description": "",
+    "tags": [
+        {
+            "id": 4046443,
+            "tagId": 16810,
+            "name": "sick_but_non-tb",
+            "value": null,
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:24:20.352Z",
+            "updatedAt": "2023-09-15T08:24:20.352Z"
+        }
+    ],
+    "size": {
+        "height": 512,
+        "width": 512
+    },
+    "objects": []
+}

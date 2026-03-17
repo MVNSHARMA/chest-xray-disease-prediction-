@@ -1,0 +1,44 @@
+{
+    "description": "",
+    "tags": [
+        {
+            "id": 4040917,
+            "tagId": 16812,
+            "name": "latent_tb",
+            "value": null,
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:21:58.199Z",
+            "updatedAt": "2023-09-15T08:21:58.199Z"
+        }
+    ],
+    "size": {
+        "height": 512,
+        "width": 512
+    },
+    "objects": [
+        {
+            "id": 44091837,
+            "classId": 53287,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "inbox@datasetninja.com",
+            "createdAt": "2023-09-15T08:21:58.200Z",
+            "updatedAt": "2023-09-15T08:21:58.200Z",
+            "tags": [],
+            "classTitle": "ObsoletePulmonaryTuberculosis",
+            "points": {
+                "exterior": [
+                    [
+                        114,
+                        89
+                    ],
+                    [
+                        216,
+                        150
+                    ]
+                ],
+                "interior": []
+            }
+        }
+    ]
+}
